@@ -23,19 +23,8 @@
 
     <object id="tablet-api" type="application/x-wacomtabletplugin"></object>
 
-    <div id="tool-shelf">
+    
 
-      <span>Stabilizer level: </span>
-      <input id="tool-stabilize-level-slider" type="range" min="3" max="20">
-      <span>weight: </span>
-      <input id="tool-stabilize-weight-slider" type="range" min="20" max="80">
-      <br>
-      <span class="comment">(Higher stabilizer level makes lines smoother,
-        and higher weight makes rendering slower.)</span>
-
-    </div>
-
-    <br>
 
     <div id="brush-image-shelf">
       <div class="brush-image on" id="circle-brush"></div>
@@ -86,6 +75,20 @@
         <br>
         <span>rotate to direction: </span>
         <input id="brush-rotate-to-direction-checkbox" type="checkbox">
+      </div>
+
+      <hr>
+
+      <div id="tool-shelf">
+
+        <span>Stabilizer level: </span>
+        <input id="tool-stabilize-level-slider" type="range" min="3" max="20">
+        <span>weight: </span>
+        <input id="tool-stabilize-weight-slider" type="range" min="20" max="80">
+        <br>
+        <span class="comment">(Higher stabilizer level makes lines smoother,
+          and higher weight makes rendering slower.)</span>
+  
       </div>
 
       <hr>
