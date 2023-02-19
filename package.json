@@ -1,0 +1,25 @@
+{
+  "name": "full_stack",
+  "version": "1.0.0",
+  "description": "Full Stack Project with MongoDB, Express, and Node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p start-db start-server serve",
+    "start-client": "browser-sync start -w --server client_side",
+    "start-server": "nodemon --watch server_side server_side/serve.js 5002",
+    "start-db": "mongod -dbpath ./db"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@disjukr/croquis-js": "^0.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.11",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5"
+  }
+}
