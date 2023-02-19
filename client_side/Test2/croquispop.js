@@ -1,7 +1,7 @@
 // Initialize croquis
 var croquis = new Croquis();
 croquis.lockHistory();
-croquis.setCanvasSize(400, 480);
+croquis.setCanvasSize(1440, 1000);
 croquis.addLayer();
 croquis.fillLayer('#fff');
 croquis.addLayer();
