@@ -163,10 +163,10 @@ function setColor() {
     s = (s + halfThumbRadius) / sbSize;
     b = 1 - ((b + halfThumbRadius + sbSize) / sbSize);
     brush.setColor(tinycolor({h: h, s:s, v: b}).toRgbString());
-    var a = croquis.getPaintingOpacity();
-    var color = tinycolor({h: h, s:s, v: b, a: a});
-    colorPickerColor.style.backgroundColor = color.toRgbString();
-    colorPickerColor.textContent = color.toHexString();
+    //var a = croquis.getPaintingOpacity();
+    //var color = tinycolor({h: h, s:s, v: b, a: a});
+    //colorPickerColor.style.backgroundColor = color.toRgbString();
+    //colorPickerColor.textContent = color.toHexString();
 }
 
 colorPickerHueSlider.onchange = function () {
