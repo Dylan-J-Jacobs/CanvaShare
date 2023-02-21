@@ -2,72 +2,73 @@
 
 <html>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Croquispop</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Croquispop</title>
 
-    <link rel="stylesheet" type="text/css" href="./croquispop.css">
-    <!--[if lt IE 11]>
+  <link rel="stylesheet" type="text/css" href="./croquispop.css">
+  <!--[if lt IE 11]>
     <link rel="stylesheet" type="text/css"
           href="./input-range-polyfill/input-range-polyfill.css">
     <![endif]-->
-    <link rel="stylesheet" type="text/css"
-          href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 
-	<!--script src="hand.minified-1.3.6.js"></script-->
+  <!--script src="hand.minified-1.3.6.js"></script-->
 
-  </head>
-
-
-  <body unselectable="on">
-
-    <object id="tablet-api" type="application/x-wacomtabletplugin"></object>
-
-    
+</head>
 
 
-    <div id="brush-image-shelf">
-      <div class="brush-image on" id="circle-brush"></div>
-      <img src="imgbrush/b0.png" class="brush-image"></img>
-      <img src="imgbrush/b1.png" class="brush-image"></img>
-      <img src="imgbrush/b2.png" class="brush-image"></img>
-      <img src="imgbrush/b3.png" class="brush-image"></img>
-      <img src="imgbrush/b4.png" class="brush-image"></img>
-      <img src="imgbrush/b5.png" class="brush-image"></img>
-    </div>
+<body unselectable="on">
 
-    <div id="canvas-area">
-    </div>
+  <object id="tablet-api" type="application/x-wacomtabletplugin"></object>
 
-    <div id="right-side">
-      <div id="color-picker">
-        <!--div id="color-picker-sb">
+
+
+
+  <div id="brush-image-shelf">
+    <div class="brush-image on" id="circle-brush"></div>
+    <img src="imgbrush/b0.png" class="brush-image"></img>
+    <img src="imgbrush/b1.png" class="brush-image"></img>
+    <img src="imgbrush/b2.png" class="brush-image"></img>
+    <img src="imgbrush/b3.png" class="brush-image"></img>
+    <img src="imgbrush/b4.png" class="brush-image"></img>
+    <img src="imgbrush/b5.png" class="brush-image"></img>
+    <!--span>eraser: </span-->
+    <input id="select-eraser-checkbox" type="checkbox">
+  </div>
+
+  <div id="canvas-area">
+  </div>
+
+  <div id="right-side">
+    <div id="color-picker">
+      <!--div id="color-picker-sb">
         </div-->
-        <span>color: </span>
-        <input id="color-pickerer" type="color">
-        <br>
-        <!--span>hue: </span>
+      <!--span>color: </span-->
+      <span class="color-inputer"><input id="color-pickerer" type="color"></span>
+      <!--br>
+        <span>hue: </span>
         <input id="color-picker-hue-slider" type="range" min="0" max="360">
         <br-->
-        <span>opacity: </span>
-        <input id="brush-opacity-slider" type="range" min="0" max="100">
-        <br>
-        <!--span>color: </span>
+      <span>opacity: </span>
+      <input id="brush-opacity-slider" type="range" min="0" max="100">
+
+      <!--hr-->
+      <span>Brush size: </span>
+      <input id="brush-size-slider" type="range" min="1" max="100">
+      <!--br>
+        <span>color: </span>
         <div id="color-picker-checker">
           <p id="color-picker-color"></p>
         </div-->
-      </div>
+    </div>
 
-      <hr>
+    <!--hr-->
 
-      <div id="brush-shelf">
-        <span>eraser: </span>
-        <input id="select-eraser-checkbox" type="checkbox">
-        <hr>
-        <span>Brush size: </span>
-        <input id="brush-size-slider" type="range" min="1" max="100">
-        <br>
-        <!--span>flow: </span>
+    <div id="brush-shelf">
+
+      <!--br>
+        <span>flow: </span>
         <input id="brush-flow-slider" type="range" min="0" max="100">
         <br>
         <span>spacing: </span>
@@ -78,11 +79,11 @@
         <br>
         <span>rotate to direction: </span>
         <input id="brush-rotate-to-direction-checkbox" type="checkbox"-->
-      </div>
+    </div>
 
-      <hr>
+    <!--hr>
 
-      <!--div id="tool-shelf">
+      <div id="tool-shelf">
 
         <span>Stabilizer level: </span>
         <input id="tool-stabilize-level-slider" type="range" min="3" max="20">
@@ -92,25 +93,25 @@
         <span class="comment">(Higher stabilizer level makes lines smoother,
           and higher weight makes rendering slower.)</span>
   
-      </div-->
+      </div>
 
-      <hr>
+      <hr-->
 
-      <button type="button" id="clear-button">erase all</button>
+    <button type="button" id="clear-button">erase all</button>
 
-      <br>
+    <br>
 
-      <!--button type="button" id="fill-button">fill layer</button-->
-    </div>
+    <!--button type="button" id="fill-button">fill layer</button-->
+  </div>
 
-    <!--[if lt IE 11]>
+  <!--[if lt IE 11]>
     <script src="./input-range-polyfill/input-range-polyfill.js"></script>
     <![endif]-->
-    <script src="TinyColor/tinycolor.js"></script>
-    <script src="HSBRect/HSBRect.js"></script>
-    <script src="croquis.js"></script>
-    <script src="croquispop.js"></script>
-    <!--[if lt IE 10]>
+  <script src="TinyColor/tinycolor.js"></script>
+  <script src="HSBRect/HSBRect.js"></script>
+  <script src="croquis.js"></script>
+  <script src="croquispop.js"></script>
+  <!--[if lt IE 10]>
     <script>
       // code from: http://stackoverflow.com/a/4448965/1711246
       function makeUnselectable(node) {
@@ -126,5 +127,6 @@
       makeUnselectable(document.body);
     </script>
     <![endif]-->
-  </body>
+</body>
+
 </html>
