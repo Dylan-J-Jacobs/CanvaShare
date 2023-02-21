@@ -139,9 +139,10 @@ updatePointer();
 
 
 //color picker
-var colorVal = document.getElementById('color-picker');
+var colorVal = document.getElementById('color-pickerer');
 
-var colorPickerHueSlider =
+
+/*var colorPickerHueSlider =
     document.getElementById('color-picker-hue-slider');
 var colorPickerSb = document.getElementById('color-picker-sb');
 var colorPickerHSBRect = new HSBRect(150, 150);
@@ -150,10 +151,12 @@ colorPickerSb.appendChild(colorPickerHSBRect.DOMElement);
 var colorPickerThumb = document.createElement('div');
 colorPickerThumb.id = 'color-picker-thumb';
 colorPickerSb.appendChild(colorPickerThumb);
-colorPickerHueSlider.value = tinycolor(brush.getColor()).toHsv().h;
+colorPickerHueSlider.value = tinycolor(brush.getColor()).toHsv().h; */
+colorVal.addEventListener('change', setColor);;
 
 function setColor() {
-    var halfThumbRadius = 7.5;
+    var newColor = document.getElementById('color-pickerer').value;
+    /*var halfThumbRadius = 7.5;
     var sbSize = 150;
     var h = colorPickerHueSlider.value;
     var s = parseFloat(
@@ -162,19 +165,20 @@ function setColor() {
         colorPickerThumb.style.getPropertyValue('margin-top'));
     s = (s + halfThumbRadius) / sbSize;
     b = 1 - ((b + halfThumbRadius + sbSize) / sbSize);
-    brush.setColor(tinycolor({h: h, s:s, v: b}).toRgbString());
+    //brush.setColor(tinycolor({h: h, s:s, v: b}).toRgbString());*/
+    brush.setColor(newColor);
     //var a = croquis.getPaintingOpacity();
     //var color = tinycolor({h: h, s:s, v: b, a: a});
     //colorPickerColor.style.backgroundColor = color.toRgbString();
     //colorPickerColor.textContent = color.toHexString();
 }
 
-colorPickerHueSlider.onchange = function () {
+/*colorPickerHueSlider.onchange = function () {
     colorPickerHSBRect.hue = colorPickerHueSlider.value;
     setColor();
-}
+} */
 
-function colorPickerPointerDown(e) {
+/*function colorPickerPointerDown(e) {
     document.addEventListener('pointermove', colorPickerPointerMove);
     colorPickerPointerMove(e);
 }
@@ -226,7 +230,7 @@ colorPickerChecker.style.backgroundImage = 'url(' +
     backgroundCheckerImage.toDataURL() + ')';
 var colorPickerColor = document.getElementById('color-picker-color');
 
-pickColor(0, 150);
+pickColor(0, 150); */
 
 //stabilizer shelf
 //var toolStabilizeLevelSlider =
