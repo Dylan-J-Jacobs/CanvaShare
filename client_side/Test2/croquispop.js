@@ -15,7 +15,7 @@ brush.setSpacing(0.2);
 
 croquis.setTool(brush);
 croquis.setToolStabilizeLevel(10);
-croquis.setToolStabilizeWeight(0.5);
+croquis.setToolStabilizeWeight(0);
 
 var croquisDOMElement = croquis.getDOMElement();
 var canvasArea = document.getElementById('canvas-area');
@@ -58,12 +58,12 @@ var clearButton = document.getElementById('clear-button');
 clearButton.onclick = function () {
     croquis.clearLayer();
 }
-var fillButton = document.getElementById('fill-button');
+/*var fillButton = document.getElementById('fill-button');
 fillButton.onclick = function () {
     var rgb = tinycolor(brush.getColor()).toRgb();
     croquis.fillLayer(tinycolor({r: rgb.r, g: rgb.g, b: rgb.b,
         a: croquis.getPaintingOpacity()}).toRgbString());
-}
+}*/
 
 //brush images
 var circleBrush = document.getElementById('circle-brush');
@@ -135,7 +135,12 @@ function updatePointer() {
 }
 updatePointer();
 
+
+
+
 //color picker
+var colorVal = document.getElementById('color-picker');
+
 var colorPickerHueSlider =
     document.getElementById('color-picker-hue-slider');
 var colorPickerSb = document.getElementById('color-picker-sb');
@@ -199,6 +204,11 @@ function pickColor(x, y) {
 colorPickerSb.addEventListener('pointerdown', colorPickerPointerDown);
 document.addEventListener('pointerup', colorPickerPointerUp);
 
+
+
+
+
+
 var backgroundCheckerImage;
 (function () {
     backgroundCheckerImage = document.createElement('canvas');
@@ -219,30 +229,30 @@ var colorPickerColor = document.getElementById('color-picker-color');
 pickColor(0, 150);
 
 //stabilizer shelf
-var toolStabilizeLevelSlider =
-    document.getElementById('tool-stabilize-level-slider');
-var toolStabilizeWeightSlider =
-    document.getElementById('tool-stabilize-weight-slider');
-toolStabilizeLevelSlider.value = croquis.getToolStabilizeLevel();
-toolStabilizeWeightSlider.value = croquis.getToolStabilizeWeight() * 100;
+//var toolStabilizeLevelSlider =
+    //document.getElementById('tool-stabilize-level-slider');
+//var toolStabilizeWeightSlider =
+    //document.getElementById('tool-stabilize-weight-slider');
+//toolStabilizeLevelSlider.value = croquis.getToolStabilizeLevel();
+//toolStabilizeWeightSlider.value = croquis.getToolStabilizeWeight() * 100;
 
 //brush shelf
 var selectEraserCheckbox =
     document.getElementById('select-eraser-checkbox');
 var brushSizeSlider = document.getElementById('brush-size-slider');
 var brushOpacitySlider = document.getElementById('brush-opacity-slider');
-var brushFlowSlider = document.getElementById('brush-flow-slider');
-var brushSpacingSlider = document.getElementById('brush-spacing-slider');
-var brushAngleSlider = document.getElementById('brush-angle-slider');
-var brushRotateToDirectionCheckbox = document.getElementById('brush-rotate-to-direction-checkbox');
+//var brushFlowSlider = document.getElementById('brush-flow-slider');
+//var brushSpacingSlider = document.getElementById('brush-spacing-slider');
+//var brushAngleSlider = document.getElementById('brush-angle-slider');
+//var brushRotateToDirectionCheckbox = document.getElementById('brush-rotate-to-direction-checkbox');
 brushSizeSlider.value = brush.getSize();
 brushOpacitySlider.value = croquis.getPaintingOpacity() * 100;
-brushFlowSlider.value = brush.getFlow() * 100;
-brushSpacingSlider.value = brush.getSpacing() * 100;
-brushAngleSlider.value = brush.getAngle();
-brushRotateToDirectionCheckbox.checked = brush.getRotateToDirection();
+//brushFlowSlider.value = brush.getFlow() * 100;
+//brushSpacingSlider.value = brush.getSpacing() * 100;
+//brushAngleSlider.value = brush.getAngle();
+//brushRotateToDirectionCheckbox.checked = brush.getRotateToDirection();
 
-toolStabilizeLevelSlider.onchange = function () {
+/*toolStabilizeLevelSlider.onchange = function () {
     croquis.setToolStabilizeLevel(toolStabilizeLevelSlider.value);
     toolStabilizeLevelSlider.value = croquis.getToolStabilizeLevel();
 }
@@ -250,7 +260,7 @@ toolStabilizeWeightSlider.onchange = function () {
     croquis.setToolStabilizeWeight(toolStabilizeWeightSlider.value * 0.01);
     toolStabilizeWeightSlider.value = croquis.getToolStabilizeWeight() * 100;
 }
-
+*/
 selectEraserCheckbox.onchange = function () {
     croquis.setPaintingKnockout(selectEraserCheckbox.checked);
 }
@@ -262,6 +272,7 @@ brushOpacitySlider.onchange = function () {
     croquis.setPaintingOpacity(brushOpacitySlider.value * 0.01);
     setColor();
 }
+/*
 brushFlowSlider.onchange = function () {
     brush.setFlow(brushFlowSlider.value * 0.01);
 }
@@ -275,6 +286,7 @@ brushAngleSlider.onchange = function () {
 brushRotateToDirectionCheckbox.onchange = function () {
     brush.setRotateToDirection(brushRotateToDirectionCheckbox.checked);
 }
+*/
 
 // Platform variables
 var mac = navigator.platform.indexOf('Mac') >= 0;
