@@ -1,7 +1,7 @@
 // Initialize croquis
 var croquis = new Croquis();
 croquis.lockHistory();
-croquis.setCanvasSize(1440, 1000);
+croquis.setCanvasSize(800, 800);
 croquis.addLayer();
 croquis.fillLayer('#fff');
 croquis.addLayer();
@@ -20,6 +20,9 @@ croquis.setToolStabilizeWeight(0);
 var croquisDOMElement = croquis.getDOMElement();
 var canvasArea = document.getElementById('canvas-area');
 canvasArea.appendChild(croquisDOMElement);
+
+
+
 function canvasPointerDown(e) {
     setPointerEvent(e);
     var pointerPosition = getRelativePosition(e.clientX, e.clientY);
@@ -30,11 +33,13 @@ function canvasPointerDown(e) {
     croquis.down(pointerPosition.x, pointerPosition.y, e.pointerType === "pen" ? e.pressure : 1);
     document.addEventListener('pointermove', canvasPointerMove);
     document.addEventListener('pointerup', canvasPointerUp);
+    
 }
 function canvasPointerMove(e) {
     setPointerEvent(e);
     var pointerPosition = getRelativePosition(e.clientX, e.clientY);
     croquis.move(pointerPosition.x, pointerPosition.y, e.pointerType === "pen" ? e.pressure : 1);
+    
 }
 function canvasPointerUp(e) {
     setPointerEvent(e);
@@ -46,6 +51,10 @@ function canvasPointerUp(e) {
         setTimeout(function() {croquis.setPaintingKnockout(selectEraserCheckbox.checked)}, 30);//timeout should be longer than 20 (knockoutTickInterval in Croquis)
     document.removeEventListener('pointermove', canvasPointerMove);
     document.removeEventListener('pointerup', canvasPointerUp);
+    //-=-=-=-=-==-==--=-=-=--=-=-=-
+    let blah = croquis.createFlattenThumbnail(800,800);
+    console.log(blah);
+    canvasArea.appendChild(blah);
 }
 function getRelativePosition(absoluteX, absoluteY) {
     var rect = croquisDOMElement.getBoundingClientRect();
@@ -83,6 +92,7 @@ function brushImagePointerDown(e) {
         image = null;
     brush.setImage(image);
     updatePointer();
+    
 }
 
 // checking pointer-events property support
