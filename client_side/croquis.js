@@ -360,6 +360,7 @@ function Croquis(imageDataList, properties) {
     var dirtyRectDisplay = document.createElement('canvas');
     var dirtyRectDisplayContext = dirtyRectDisplay.getContext('2d');
     dirtyRectDisplay.className = 'croquis-dirty-rect-display';
+    dirtyRectDisplay.id = 'sentcanvas';
     dirtyRectDisplay.style.position = 'absolute';
     var renderDirtyRect = false;
     function sortLayers() {
@@ -432,6 +433,7 @@ function Croquis(imageDataList, properties) {
         layer.style.opacity = 1;
         var canvas = document.createElement('canvas');
         canvas.className = 'croquis-layer-canvas';
+        canvas.id = 'sendcanv'
         canvas.width = size.width;
         canvas.height = size.height;
         canvas.style.position = 'absolute';

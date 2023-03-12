@@ -34,7 +34,24 @@ function canvasPointerDown(e) {
     document.addEventListener('pointermove', canvasPointerMove);
     document.addEventListener('pointerup', canvasPointerUp);
     
+    
 }
+//var b = setInterval(sendCanv,300);
+function sendCanv() {
+    //-=-=-=-=-==-==--=-=-=--=-=-=-
+    let yah = document.getElementById('canvas-area2');
+    let blah = croquis.createFlattenThumbnail();
+    console.log(blah);
+    //let blah = document.getElementById('sendcanv');
+    //blah.id='lala';
+    //blah.className='blah';
+    //canvasArea.appendChild(blah);
+    yah.innerHTML="";
+    yah.appendChild(blah);
+
+}
+
+
 function canvasPointerMove(e) {
     setPointerEvent(e);
     var pointerPosition = getRelativePosition(e.clientX, e.clientY);
@@ -51,10 +68,7 @@ function canvasPointerUp(e) {
         setTimeout(function() {croquis.setPaintingKnockout(selectEraserCheckbox.checked)}, 30);//timeout should be longer than 20 (knockoutTickInterval in Croquis)
     document.removeEventListener('pointermove', canvasPointerMove);
     document.removeEventListener('pointerup', canvasPointerUp);
-    //-=-=-=-=-==-==--=-=-=--=-=-=-
-    let blah = croquis.createFlattenThumbnail(800,800);
-    console.log(blah);
-    canvasArea.appendChild(blah);
+    
 }
 function getRelativePosition(absoluteX, absoluteY) {
     var rect = croquisDOMElement.getBoundingClientRect();
@@ -92,7 +106,6 @@ function brushImagePointerDown(e) {
         image = null;
     brush.setImage(image);
     updatePointer();
-    
 }
 
 // checking pointer-events property support
