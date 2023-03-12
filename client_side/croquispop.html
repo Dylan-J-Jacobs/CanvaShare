@@ -7,13 +7,9 @@
   <title>Croquispop</title>
 
   <link rel="stylesheet" type="text/css" href="./croquispop.css">
-  <!--[if lt IE 11]>
-    <link rel="stylesheet" type="text/css"
-          href="./input-range-polyfill/input-range-polyfill.css">
-    <![endif]-->
+
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 
-  <!--script src="hand.minified-1.3.6.js"></script-->
 
 </head>
 
@@ -33,7 +29,7 @@
     <img src="imgbrush/b3.png" class="brush-image"></img>
     <img src="imgbrush/b4.png" class="brush-image"></img>
     <img src="imgbrush/b5.png" class="brush-image"></img>
-    <!--span>eraser: </span-->
+
     <input id="select-eraser-checkbox" type="checkbox">
   </div>
 
@@ -45,91 +41,31 @@
 
   <div id="right-side">
     <div id="color-picker">
-      <!--div id="color-picker-sb">
-        </div-->
-      <!--span>color: </span-->
       <span class="color-inputer"><input id="color-pickerer" type="color"></span>
-      <!--br>
-        <span>hue: </span>
-        <input id="color-picker-hue-slider" type="range" min="0" max="360">
-        <br-->
+
       <span>opacity: </span>
       <input id="brush-opacity-slider" type="range" min="0" max="100">
 
-      <!--hr-->
       <span>Brush size: </span>
       <input id="brush-size-slider" type="range" min="1" max="100">
-      <!--br>
-        <span>color: </span>
-        <div id="color-picker-checker">
-          <p id="color-picker-color"></p>
-        </div-->
+
     </div>
 
-    <!--hr-->
 
     <div id="brush-shelf">
 
-      <!--br>
-        <span>flow: </span>
-        <input id="brush-flow-slider" type="range" min="0" max="100">
-        <br>
-        <span>spacing: </span>
-        <input id="brush-spacing-slider" type="range" min="0" max="1000">
-        <br>
-        <span>angle: </span>
-        <input id="brush-angle-slider" type="range" min="0" max="360">
-        <br>
-        <span>rotate to direction: </span>
-        <input id="brush-rotate-to-direction-checkbox" type="checkbox"-->
     </div>
 
-    <!--hr>
-
-      <div id="tool-shelf">
-
-        <span>Stabilizer level: </span>
-        <input id="tool-stabilize-level-slider" type="range" min="3" max="20">
-        <span>weight: </span>
-        <input id="tool-stabilize-weight-slider" type="range" min="20" max="80">
-        <br>
-        <span class="comment">(Higher stabilizer level makes lines smoother,
-          and higher weight makes rendering slower.)</span>
-  
-      </div>
-
-      <hr-->
 
     <button type="button" id="clear-button">erase all</button>
 
     <br>
-
-    <!--button type="button" id="fill-button">fill layer</button-->
   </div>
 
-  <!--[if lt IE 11]>
-    <script src="./input-range-polyfill/input-range-polyfill.js"></script>
-    <![endif]-->
-  <!--script src="TinyColor/tinycolor.js"></script-->
-  <!--script src="HSBRect/HSBRect.js"></script-->
+
   <script src="croquis.js"></script>
   <script src="croquispop.js"></script>
-  <!--[if lt IE 10]>
-    <script>
-      // code from: http://stackoverflow.com/a/4448965/1711246
-      function makeUnselectable(node) {
-        if (node.nodeType == 1) {
-          node.setAttribute('unselectable', 'on');
-        }
-        var child = node.firstChild;
-        while (child) {
-          makeUnselectable(child);
-          child = child.nextSibling;
-        }
-      }
-      makeUnselectable(document.body);
-    </script>
-    <![endif]-->
+
 </body>
 
 </html>

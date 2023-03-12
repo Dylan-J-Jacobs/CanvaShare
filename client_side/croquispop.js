@@ -81,12 +81,7 @@ var clearButton = document.getElementById('clear-button');
 clearButton.onclick = function () {
     croquis.clearLayer();
 }
-/*var fillButton = document.getElementById('fill-button');
-fillButton.onclick = function () {
-    var rgb = tinycolor(brush.getColor()).toRgb();
-    croquis.fillLayer(tinycolor({r: rgb.r, g: rgb.g, b: rgb.b,
-        a: croquis.getPaintingOpacity()}).toRgbString());
-}*/
+
 
 //brush images
 var circleBrush = document.getElementById('circle-brush');
@@ -159,135 +154,25 @@ function updatePointer() {
 updatePointer();
 
 
-
-
 //color picker
 var colorVal = document.getElementById('color-pickerer');
-
-
-/*var colorPickerHueSlider =
-    document.getElementById('color-picker-hue-slider');
-var colorPickerSb = document.getElementById('color-picker-sb');
-var colorPickerHSBRect = new HSBRect(150, 150);
-colorPickerHSBRect.DOMElement.id = 'color-picker-hsbrect';
-colorPickerSb.appendChild(colorPickerHSBRect.DOMElement);
-var colorPickerThumb = document.createElement('div');
-colorPickerThumb.id = 'color-picker-thumb';
-colorPickerSb.appendChild(colorPickerThumb);
-colorPickerHueSlider.value = tinycolor(brush.getColor()).toHsv().h; */
 colorVal.addEventListener('change', setColor);;
 
 function setColor() {
     var newColor = document.getElementById('color-pickerer').value;
-    /*var halfThumbRadius = 7.5;
-    var sbSize = 150;
-    var h = colorPickerHueSlider.value;
-    var s = parseFloat(
-        colorPickerThumb.style.getPropertyValue('margin-left'));
-    var b = parseFloat(
-        colorPickerThumb.style.getPropertyValue('margin-top'));
-    s = (s + halfThumbRadius) / sbSize;
-    b = 1 - ((b + halfThumbRadius + sbSize) / sbSize);
-    //brush.setColor(tinycolor({h: h, s:s, v: b}).toRgbString());*/
     brush.setColor(newColor);
-    //var a = croquis.getPaintingOpacity();
-    //var color = tinycolor({h: h, s:s, v: b, a: a});
-    //colorPickerColor.style.backgroundColor = color.toRgbString();
-    //colorPickerColor.textContent = color.toHexString();
 }
 
-/*colorPickerHueSlider.onchange = function () {
-    colorPickerHSBRect.hue = colorPickerHueSlider.value;
-    setColor();
-} */
-
-/*function colorPickerPointerDown(e) {
-    document.addEventListener('pointermove', colorPickerPointerMove);
-    colorPickerPointerMove(e);
-}
-function colorPickerPointerUp(e) {
-    document.removeEventListener('pointermove', colorPickerPointerMove);
-}
-function colorPickerPointerMove(e) {
-    var boundRect = colorPickerSb.getBoundingClientRect();
-    var x = (e.clientX - boundRect.left);
-    var y = (e.clientY - boundRect.top);
-    pickColor(x, y);
-}
-function minmax(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-}
-function pickColor(x, y) {
-    var halfThumbRadius = 7.5;
-    var sbSize = 150;
-    colorPickerThumb.style.setProperty('margin-left',
-        (minmax(x, 0, sbSize) - halfThumbRadius) + 'px');
-    colorPickerThumb.style.setProperty('margin-top',
-        (minmax(y, 0, sbSize) - (sbSize + halfThumbRadius)) + 'px');
-    colorPickerThumb.style.setProperty('border-color',
-        (y < sbSize * 0.5)? '#000' : '#fff');
-    setColor();
-}
-colorPickerSb.addEventListener('pointerdown', colorPickerPointerDown);
-document.addEventListener('pointerup', colorPickerPointerUp);
-
-
-
-
-
-
-var backgroundCheckerImage;
-(function () {
-    backgroundCheckerImage = document.createElement('canvas');
-    backgroundCheckerImage.width = backgroundCheckerImage.height = 20;
-    var backgroundImageContext = backgroundCheckerImage.getContext('2d');
-    backgroundImageContext.fillStyle = '#fff';
-    backgroundImageContext.fillRect(0, 0, 20, 20);
-    backgroundImageContext.fillStyle = '#ccc';
-    backgroundImageContext.fillRect(0, 0, 10, 10);
-    backgroundImageContext.fillRect(10, 10, 20, 20);
-})();
-
-var colorPickerChecker = document.getElementById('color-picker-checker');
-colorPickerChecker.style.backgroundImage = 'url(' +
-    backgroundCheckerImage.toDataURL() + ')';
-var colorPickerColor = document.getElementById('color-picker-color');
-
-pickColor(0, 150); */
-
-//stabilizer shelf
-//var toolStabilizeLevelSlider =
-    //document.getElementById('tool-stabilize-level-slider');
-//var toolStabilizeWeightSlider =
-    //document.getElementById('tool-stabilize-weight-slider');
-//toolStabilizeLevelSlider.value = croquis.getToolStabilizeLevel();
-//toolStabilizeWeightSlider.value = croquis.getToolStabilizeWeight() * 100;
 
 //brush shelf
 var selectEraserCheckbox =
     document.getElementById('select-eraser-checkbox');
 var brushSizeSlider = document.getElementById('brush-size-slider');
 var brushOpacitySlider = document.getElementById('brush-opacity-slider');
-//var brushFlowSlider = document.getElementById('brush-flow-slider');
-//var brushSpacingSlider = document.getElementById('brush-spacing-slider');
-//var brushAngleSlider = document.getElementById('brush-angle-slider');
-//var brushRotateToDirectionCheckbox = document.getElementById('brush-rotate-to-direction-checkbox');
 brushSizeSlider.value = brush.getSize();
 brushOpacitySlider.value = croquis.getPaintingOpacity() * 100;
-//brushFlowSlider.value = brush.getFlow() * 100;
-//brushSpacingSlider.value = brush.getSpacing() * 100;
-//brushAngleSlider.value = brush.getAngle();
-//brushRotateToDirectionCheckbox.checked = brush.getRotateToDirection();
 
-/*toolStabilizeLevelSlider.onchange = function () {
-    croquis.setToolStabilizeLevel(toolStabilizeLevelSlider.value);
-    toolStabilizeLevelSlider.value = croquis.getToolStabilizeLevel();
-}
-toolStabilizeWeightSlider.onchange = function () {
-    croquis.setToolStabilizeWeight(toolStabilizeWeightSlider.value * 0.01);
-    toolStabilizeWeightSlider.value = croquis.getToolStabilizeWeight() * 100;
-}
-*/
+
 selectEraserCheckbox.onchange = function () {
     croquis.setPaintingKnockout(selectEraserCheckbox.checked);
 }
@@ -299,21 +184,7 @@ brushOpacitySlider.onchange = function () {
     croquis.setPaintingOpacity(brushOpacitySlider.value * 0.01);
     setColor();
 }
-/*
-brushFlowSlider.onchange = function () {
-    brush.setFlow(brushFlowSlider.value * 0.01);
-}
-brushSpacingSlider.onchange = function () {
-    brush.setSpacing(brushSpacingSlider.value * 0.01);
-}
-brushAngleSlider.onchange = function () {
-    brush.setAngle(brushAngleSlider.value);
-    updatePointer();
-}
-brushRotateToDirectionCheckbox.onchange = function () {
-    brush.setRotateToDirection(brushRotateToDirectionCheckbox.checked);
-}
-*/
+
 
 // Platform variables
 var mac = navigator.platform.indexOf('Mac') >= 0;

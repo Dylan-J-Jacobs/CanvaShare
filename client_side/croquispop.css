@@ -24,26 +24,11 @@ body::-webkit-scrollbar {
   cursor: crosshair;
 }
 
-/*.croquis-dirty-rect-display {
-  touch-action: none;
-} */
 
 #right-side {
   display: inline-block;
   vertical-align: top;
 }
-/*
-#color-picker:active {
-  cursor: default;
-}
-
-#color-picker-sb {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  touch-action: none;
-  position: relative;
-}*/
 
 #brush-image-shelf {
   position: fixed;
@@ -91,32 +76,6 @@ body::-webkit-scrollbar {
   margin: 0;
   padding: 0;
 }
-
-/*#color-picker-white {
-  width: 150px;
-  height: 150px;
-  background-color: #fff;
-}
-
-#color-picker-thumb {
-  position: relative;
-  margin-top: -7.5px;
-  margin-left: -7.5px;
-  width: 11px;
-  height: 11px;
-  border-radius: 7.5px;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 2px;
-}
-
-#color-picker-checker {
-  display: inline-block;
-}
-
-#color-picker-color {
-  margin: 0;
-}*/
 
 #circle-brush {
   width: 30px;
