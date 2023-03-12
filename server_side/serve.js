@@ -5,20 +5,16 @@ const app = express();
 app.options('*',cors());
 
 
-app.get('/',blah);
 
-function blah(req,res) {
-   console.log("trying to get /");
-   res.setHeader('Access-Control-Allow-Origin','*');
-   res.json({msg: 'blah'});
-   //res.send("Hello World 2");
-}
+app.get('/canvas', (req,res) => {
+   
+   //return canvas or img to be set on the client side
 
-app.get('/blah',(req,res) => {
-   console.log("trying to get /blah");
-   res.setHeader('Access-Control-Allow-Origin','*');
-   res.json({msg:'blah too'});
-   //res.send("testing");
+});
+app.post('/canvas',(req,res) => {
+   
+   //set canvas to current incoming img
+
 });
 
 
@@ -33,6 +29,6 @@ if (process.argv.length<3) {
 } else {
    PORT=process.argv[2];
 }
-app.listen(PORT, function() {
+app.listen(process.argv[2], function() {
    console.log('listening on',PORT);
 });
