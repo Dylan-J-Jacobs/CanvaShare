@@ -356,6 +356,7 @@ function Croquis(imageDataList, properties) {
     var paintingCanvas = document.createElement('canvas');
     var paintingContext = paintingCanvas.getContext('2d');
     paintingCanvas.className = 'croquis-painting-canvas';
+    paintingCanvas.id='painting';
     paintingCanvas.style.position = 'absolute';
     var dirtyRectDisplay = document.createElement('canvas');
     var dirtyRectDisplayContext = dirtyRectDisplay.getContext('2d');
