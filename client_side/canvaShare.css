@@ -24,12 +24,6 @@ body::-webkit-scrollbar {
   cursor: crosshair;
 }
 
-
-#right-side {
-  display: inline-block;
-  vertical-align: top;
-}
-
 #brush-image-shelf {
   position: fixed;
   right: 0;
@@ -59,9 +53,34 @@ body::-webkit-scrollbar {
   position: relative;
   border: 2px solid black;
   position: fixed;
+  
+}
+
+.left-side {
   left: 0px;
   top: 25%;
   margin-left: 10px;
+  
+  position: absolute;
+  position: fixed;
+  display: block;
+}
+
+.left-side input {
+  margin-top: 10px;
+  margin-left: 12px;
+}
+
+#brush-size-slider {
+  margin-top: 50px;
+}
+
+input[type=range][orient=vertical] {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    width: 10px;
+    height: 175px;
+    padding: 0 5px;
 }
 
 .color-inputer input[type=color] {
