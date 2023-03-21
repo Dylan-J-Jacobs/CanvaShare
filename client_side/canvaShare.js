@@ -7,42 +7,50 @@ function setup() {
 //////////-=Requests=-/////////////////
 
 function getCurrImg() {
-    req.open("GET","https://cpsc.hiram.edu/jacobsdj/canvas");
-    req.addEventListener("load",handleGetImage);
-    req.send();
+    //https://cpsc.hiram.edu/jacobsdj/canvas
+    if (!drawing) {
+        req.open("GET","http://localhost:5002/canvas");
+        req.addEventListener("load",handleGetImage);
+        req.send();
+    }
+    
 }
 
 
 function sendCurrImg() {
-    req1.open("POST","https://cpsc.hiram.edu/jacobsdj/canvas");
-    req1.addEventListener("load",handleSendResponse);
-    req1.setRequestHeader("Content-Type", "application/json");
+    if (!drawing) {
+        req1.open("POST","http://localhost:5002/canvas");
+        req1.addEventListener("load",handleSendResponse);
+        req1.setRequestHeader("Content-Type", "application/json");
 
-    //-=-=-=-=-==-==--=-=-=--=-=-=-
-    let yah = document.getElementById('canvas-area2');
-    let blah = croquis.createFlattenThumbnail();
-    //console.log(blah);
+        //-=-=-=-=-==-==--=-=-=--=-=-=-
+        let yah = document.getElementById('canvas-area2');
+        let blah = croquis.createFlattenThumbnail();
+        //console.log(blah);
 
-    var image = new Image();
-    image.id = "pic";
-    image.src = blah.toDataURL();
-    //console.log(blah.toDataURL());
+        var image = new Image();
+        image.id = "pic";
+        image.src = blah.toDataURL();
+        //console.log(blah.toDataURL());
 
-    var reqBody = {
-        img: blah.toDataURL()
-    
+        var reqBody = {
+            img: blah.toDataURL()
+        
+        }
+
+        //console.log(JSON.stringify(reqBody));
+        req1.send(JSON.stringify(reqBody));
+        
+        //yah.innerHTML="";
+        //yah.appendChild(image);
     }
-
-    //console.log(JSON.stringify(reqBody));
-    req1.send(JSON.stringify(reqBody));
     
-    //yah.innerHTML="";
-    //yah.appendChild(image);
 
 }
 
-var a = setInterval(getCurrImg,900);
-var b = setInterval(sendCurrImg,1000);
+var a = setInterval(getCurrImg,300);
+var b = setInterval(sendCurrImg,350);
+var drawing = false;
 
 
 
@@ -59,12 +67,12 @@ function handleGetImage() {
 
     let yah = document.getElementById('canvas-area2');
 
-    //let canv = document.getElementById('painting');
-    //ctx = canv.getContext('2d');
-    //ctx.drawImage(image,0,0);
+    let canv = document.getElementById('painting');
+    ctx = canv.getContext('2d');
+    ctx.drawImage(image,0,0);
 
-    yah.innerHTML="";
-    yah.appendChild(image);
+    //yah.innerHTML="";
+    //yah.appendChild(image);
 
     //random_Quote.innerHTML="<p>"+quote.quote+" --<b>"+quote.name+'</b></p><span><button onclick="upRequest()" type="button">Up</button><button onclick="downRequest()" type="button" >Down</button><button onclick="delRequest()" type="button" >Delete</button></span>';
 }
@@ -87,6 +95,7 @@ croquis.addLayer();
 croquis.selectLayer(1);
 croquis.unlockHistory();
 
+
 var brush = new Croquis.Brush();
 brush.setSize(40);
 brush.setColor('#000');
@@ -103,6 +112,7 @@ canvasArea.appendChild(croquisDOMElement);
 
 
 function canvasPointerDown(e) {
+    drawing = true;
     setPointerEvent(e);
     var pointerPosition = getRelativePosition(e.clientX, e.clientY);
     if (pointerEventsNone)
@@ -134,6 +144,7 @@ function canvasPointerUp(e) {
         setTimeout(function() {croquis.setPaintingKnockout(selectEraserCheckbox.checked)}, 30);//timeout should be longer than 20 (knockoutTickInterval in Croquis)
     document.removeEventListener('pointermove', canvasPointerMove);
     document.removeEventListener('pointerup', canvasPointerUp);
+    drawing = false;
     
 }
 function getRelativePosition(absoluteX, absoluteY) {
@@ -142,11 +153,7 @@ function getRelativePosition(absoluteX, absoluteY) {
 }
 croquisDOMElement.addEventListener('pointerdown', canvasPointerDown);
 
-//clear & fill button ui
-var clearButton = document.getElementById('clear-button');
-clearButton.onclick = function () {
-    croquis.clearLayer();
-}
+
 
 
 //brush images
