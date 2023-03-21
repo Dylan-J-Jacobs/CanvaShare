@@ -4,7 +4,7 @@
   "description": "Full Stack Project with MongoDB, Express, and Node",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p start-db start-server serve",
+    "start": "run-p start-db start-server start-client",
     "start-client": "browser-sync start -w --server client_side",
     "start-server": "nodemon --watch server_side server_side/app.js 5002",
     "start-db": "mongod -dbpath ./db"
