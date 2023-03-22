@@ -5,6 +5,13 @@ function setup() {
 }
 
 //////////-=Requests=-/////////////////
+var firstTime = true;
+
+function getCode() {
+    var code = window.location.search;
+    console.log(code);
+}
+getCode();
 
 function getCurrImg() {
     //https://cpsc.hiram.edu/jacobsdj/canvas
@@ -18,7 +25,7 @@ function getCurrImg() {
 
 
 function sendCurrImg() {
-    if (!drawing) {
+    if (!drawing && !firstTime) {
         req1.open("POST","http://localhost:5002/canvas");
         req1.addEventListener("load",handleSendResponse);
         req1.setRequestHeader("Content-Type", "application/json");
@@ -70,6 +77,8 @@ function handleGetImage() {
     let canv = document.getElementById('painting');
     ctx = canv.getContext('2d');
     ctx.drawImage(image,0,0);
+
+    firstTime = false;
 
     //yah.innerHTML="";
     //yah.appendChild(image);
@@ -145,6 +154,7 @@ function canvasPointerUp(e) {
     document.removeEventListener('pointermove', canvasPointerMove);
     document.removeEventListener('pointerup', canvasPointerUp);
     drawing = false;
+    //firstTime = false;
     
 }
 function getRelativePosition(absoluteX, absoluteY) {

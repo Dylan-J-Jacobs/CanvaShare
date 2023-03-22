@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Croquispop</title>
+
+  <link rel="stylesheet" type="text/css" href="./canvaShare.css">
+
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+
+</head>
+
+
+<body unselectable="on">
+
+  <object id="tablet-api" type="application/x-wacomtabletplugin"></object>
+
+
+
+
+  <div id="brush-image-shelf">
+    <div class="brush-image on" id="circle-brush"></div>
+    <img src="imgbrush/b0.png" class="brush-image"></img>
+    <img src="imgbrush/b1.png" class="brush-image"></img>
+    <img src="imgbrush/b2.png" class="brush-image"></img>
+    <img src="imgbrush/b3.png" class="brush-image"></img>
+    <img src="imgbrush/b4.png" class="brush-image"></img>
+    <img src="imgbrush/b5.png" class="brush-image"></img>
+
+    <input id="select-eraser-checkbox" type="checkbox">
+  </div>
+
+  <div id="canvas-area">
+  </div>
+
+  <div id="canvas-area2">
+  </div>
+
+
+  <div class="left-side">
+    <span class="color-inputer"><input id="color-pickerer" type="color"></span>
+    <br>
+    <span><input id="brush-size-slider" type="range" orient="vertical" min="1" max="100"></span>
+    <br>
+    <span><input id="brush-opacity-slider" type="range" orient="vertical" min="0" max="100"></span>
+  </div>
+
+
+  <script src="croquis.js"></script>
+  <script src="canvaShare.js"></script>
+
+</body>
+
+</html>

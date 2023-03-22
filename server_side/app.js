@@ -1,4 +1,5 @@
 let express = require('express');
+let merge = require('merge-images');
 let cors = require('cors');
 let MongoClient = require('mongodb').MongoClient;
 let connstr = "mongodb://localhost/quoteDB";
