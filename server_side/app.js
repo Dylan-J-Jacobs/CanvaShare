@@ -1,8 +1,9 @@
 let express = require('express');
-let merge = require('merge-images');
+const mergeImages = require('merge-images');
+const { Canvas, Image } = require('canvas');
 let cors = require('cors');
 let MongoClient = require('mongodb').MongoClient;
-let connstr = "mongodb://localhost/quoteDB";
+let connstr = "mongodb://localhost/canvasDB";
 let assert = require('assert');
 let app = express();
 let port = 5002;
@@ -32,10 +33,25 @@ MongoClient.connect(connstr)
 		  
 		  
 			console.log("out");
-			image = req.body.img;
-			res.send("Got your post");
-		  
-		  
+			//image = req.body.img;
+			
+			if (image != "") {
+				const image2 = new Image();
+				image2.src=image;
+
+				const image3 = new Image();
+				image3.src=req.body.img;
+				mergeImages([image2.src, image3.src], {
+					Canvas: Canvas,
+					Image: Image
+				})
+					.then(b64 => image=b64);
+				//console.log(image);
+				
+				res.send("Got your post");
+			} else {
+				image = req.body.img;
+			}
 		});
 
 
@@ -52,5 +68,5 @@ MongoClient.connect(connstr)
 
 
 	.catch(err => {
-		console.log("IN OTHER ERR");
+		console.log("IN OTHER ERR", err);
 	});

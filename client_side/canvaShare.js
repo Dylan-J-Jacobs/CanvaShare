@@ -48,8 +48,7 @@ function sendCurrImg() {
         //console.log(JSON.stringify(reqBody));
         req1.send(JSON.stringify(reqBody));
         
-        //yah.innerHTML="";
-        //yah.appendChild(image);
+
     }
     
 
@@ -80,10 +79,10 @@ function handleGetImage() {
 
     firstTime = false;
 
-    //yah.innerHTML="";
-    //yah.appendChild(image);
+    // yah.innerHTML="";
+    // yah.appendChild(image);
 
-    //random_Quote.innerHTML="<p>"+quote.quote+" --<b>"+quote.name+'</b></p><span><button onclick="upRequest()" type="button">Up</button><button onclick="downRequest()" type="button" >Down</button><button onclick="delRequest()" type="button" >Delete</button></span>';
+    
 }
 
 function handleSendResponse() {

@@ -410,7 +410,7 @@ function Croquis(imageDataList, properties) {
         var thumbnailContext = thumbnail.getContext('2d');
         thumbnail.width = width;
         thumbnail.height = height;
-        for (var i = 0; i < layers.length; ++i) {
+        for (var i = 1; i < layers.length; ++i) {
             if (!self.getLayerVisible(i))
                 continue;
             var canvas = getLayerCanvas(i);
