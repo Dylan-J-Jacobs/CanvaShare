@@ -17,9 +17,9 @@ MongoClient.connect(connstr)
 
 		var image = "";
 
-		app.get('/canvas',(req,res) => {
+		app.get('/canvas/:id',(req,res) => {
 
-
+			let id = req.params.id; // console.log(req.params.id);
 			res.setHeader('Content-Type','application/json');
 			console.log("in");
 			let sen = {img:image};
@@ -29,9 +29,9 @@ MongoClient.connect(connstr)
 		});
 		  
 		  // Sending the image up to the server.
-		app.post('/canvas',(req,res) => {
+		app.post('/canvas/:id',(req,res) => {
 		  
-		  
+			let id = req.params.id; // console.log(req.params.id);
 			console.log("out");
 			//image = req.body.img;
 			
@@ -54,7 +54,7 @@ MongoClient.connect(connstr)
 			}
 		});
 
-
+		// Will return a new room # to be used.
 		app.get('/:room',(req,res) => {
 			let id = req.params.room;
 			console.log(id);

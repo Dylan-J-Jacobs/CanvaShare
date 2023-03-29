@@ -8,15 +8,18 @@ function setup() {
 var firstTime = true;
 
 function getCode() {
-    var code = window.location.search;
-    console.log(code);
+    var query = window.location.search.substring(1);
+    var vars = query.split("=");
+    var ID= vars[1];
+    return ID;
 }
+
 getCode();
 
 function getCurrImg() {
     //https://cpsc.hiram.edu/jacobsdj/canvas
     if (!drawing) {
-        req.open("GET","http://localhost:5002/canvas");
+        req.open("GET","http://localhost:5002/canvas/id="+getCode());
         req.addEventListener("load",handleGetImage);
         req.send();
     }
@@ -26,7 +29,7 @@ function getCurrImg() {
 
 function sendCurrImg() {
     if (!drawing && !firstTime) {
-        req1.open("POST","http://localhost:5002/canvas");
+        req1.open("POST","http://localhost:5002/canvas/id="+getCode());
         req1.addEventListener("load",handleSendResponse);
         req1.setRequestHeader("Content-Type", "application/json");
 
