@@ -3,21 +3,24 @@ const mergeImages = require('merge-images');
 const { Canvas, Image } = require('canvas');
 let cors = require('cors');
 let MongoClient = require('mongodb').MongoClient;
-let connstr = "mongodb://localhost/canvasDB";
+let connstr = "mongodb://mongo_main/jacobsdjcanvasDB";
 let assert = require('assert');
 let app = express();
-let port = 5002;
+let port = 10003;
 
 MongoClient.connect(connstr)
 	.then(client => {
 		app.use(cors());
 		app.use(express.json());
+		
+		app.use(express.static('client_side'));
+		
 		let db = client.db();
 		console.log("db is",db);
 
 		var image = "";
 
-		app.get('/canvas/:id',(req,res) => {
+		app.get('/canvas/:id', async (req,res) => {
 
 			let id = req.params.id; // console.log(req.params.id);
 			res.setHeader('Content-Type','application/json');
@@ -29,7 +32,7 @@ MongoClient.connect(connstr)
 		});
 		  
 		  // Sending the image up to the server.
-		app.post('/canvas/:id',(req,res) => {
+		app.post('/canvas/:id', async (req,res) => {
 		  
 			let id = req.params.id; // console.log(req.params.id);
 			console.log("out");

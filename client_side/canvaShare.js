@@ -19,7 +19,8 @@ getCode();
 function getCurrImg() {
     //https://cpsc.hiram.edu/jacobsdj/canvas
     if (!drawing) {
-        req.open("GET","http://localhost:5002/canvas/id="+getCode());
+        req.open("GET","https://cpsc.hiram.edu/jacobsdj/canvas/id="+getCode());
+        //http://localhost:5002/canvas/id="+getCode()
         req.addEventListener("load",handleGetImage);
         req.send();
     }
@@ -29,7 +30,8 @@ function getCurrImg() {
 
 function sendCurrImg() {
     if (!drawing && !firstTime) {
-        req1.open("POST","http://localhost:5002/canvas/id="+getCode());
+        req1.open("POST","https://cpsc.hiram.edu/jacobsdj/canvas/id="+getCode());
+        //http://localhost:5002/canvas/id="+getCode()
         req1.addEventListener("load",handleSendResponse);
         req1.setRequestHeader("Content-Type", "application/json");
 
