@@ -16,32 +16,110 @@
       
     </script>
     <style>
-        .centered {
+
+        @media screen and (max-width: 540px) {
+          .enterRoom {
+            display: grid;
+            margin-right: auto;
+            margin-left: auto;
+            color: black;
+            margin-left: 0px;
+            padding-left: 0px;
+          }
+
+          .enterRoom h1 {
+            font-size: 1em;
+          }
+        }
+
+        body {
+          height: 100%;
+          width: 100%;
+          background-image: linear-gradient(#FFB03A, #E21143);
+        }
+        html{
+          min-height: 100%;
+          position:relative;
+        }
+
+        .enterRoom {
+            display: grid;
+            margin-right: auto;
+            margin-left: auto;
+            color: black;
+            padding-top: 10%;
+            padding-left: 25%;
+            padding-right: 25%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .enterRoom h1 {
             display: flex;
+            margin: auto auto;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            min-height: 50vh;
+            border-radius: 10em;
+            max-width: 10em;
+            max-height: 10em;
+            font-size: 6em;
+            background: -webkit-linear-gradient(black,white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        input {
-            border: 1px solid black;
-            border-radius: 10px;
+        #room_input {
+            border-color: black;
+            border-radius: 1em;
+            height: 2em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
+            background-color: blanchedalmond;
         }
-        h1 {
 
+        .joinOrCreate input {
+            width: 100%;
+            margin-top: 10px;
+            border-color: black;
+            border-radius: 1em;
+            height: 3em;
+            transition-property: background-color;
+            transition-duration: 0.5s;
+            transition-delay: 0ms;
+            text-decoration: none;
+            background-color: blanchedalmond;
+        }
+
+        .joinOrCreate input:hover {
+            background-color:crimson;
+            color: white;
         }
     </style>
   </head>
   <body>
-    <section class="centered">
+
+
+
+    <div class="enterRoom">
         <h1>CanvaShare</h1>
+
         <form action="canvas.html" method="GET">
-          <input placeholder="Room #" id="room_input" name="room_code">
-          <input type="submit" value="submit">
+          <center><input placeholder="Room #" id="room_input" name="room_code"></center>
+
+          <div class="joinOrCreate">
+            <input type="submit" value="Join Room">
+            <input type="submit" value="Create a Room">
+          </div>
+
+          
         </form>   
         
-    </section>
+      </div>
+
+
+
   </body>
 </html>
