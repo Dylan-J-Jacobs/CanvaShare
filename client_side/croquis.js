@@ -1,4 +1,9 @@
+
 function Croquis(imageDataList, properties) {
+    //import { io } from "socket.io-client";
+
+
+
     var self = this;
     if (properties != null)
         for (var property in properties)
@@ -669,7 +674,19 @@ function Croquis(imageDataList, properties) {
         context.globalCompositeOperation = paintingKnockout ?
             'destination-out' : 'source-over';
         context.drawImage(paintingCanvas, 0, 0, w, h);
+
+        //Sending to server
+        //
+        //
+        //
+        //
+        let intoData=paintingCanvas.toDataURL();
+        socket.emit('canvas', intoData);
+
         context.restore();
+        //
+        //
+        //
     }
     function _move(x, y, pressure) {
         if (tool.move)
@@ -1413,5 +1430,39 @@ Croquis.Brush = function () {
         dir = atan2(y - lastY, x - lastX);
         drawReserved();
         return dirtyRect;
+    }
+
+
+    ////////////////// Running socket.io setup connections.
+
+    socket = io.connect('http://localhost:3000');
+    // var query = window.location.search.substring(1);
+    // var vars = query.split("=");
+    // var ID= vars[1];
+
+    // Send a request with the room code asking for the correct canvas.
+    window.onload=setUpCanv;
+    // Draw a change when it comes in
+    socket.on('canvas', drawImg);
+    // Waiting for the correct canvas to come down from the server, then setting the working canvas to a current version.
+    // socket.on('getRoomCanv', setStartCanv);
+
+
+    function setUpCanv() {
+        req=new XMLHttpRequest();
+        req.open("GET","http://localhost:3000/room/id="+getCode());
+        req.addEventListener("load",setStartCanv);
+        req.send();
+    }
+
+    function drawImg(data) {
+        console.log("update recieved")
+        var imgToUse = new Image();
+        imgToUse.src=data;
+        context.drawImage(imgToUse, 0, 0, 800, 800);
+    }
+
+    function setStartCanv() {
+        console.log(req.response);
     }
 }

@@ -59,8 +59,8 @@ function sendCurrImg() {
 
 }
 
-var a = setInterval(getCurrImg,300);
-var b = setInterval(sendCurrImg,350);
+// var a = setInterval(getCurrImg,300);
+// var b = setInterval(sendCurrImg,350);
 var drawing = false;
 
 
@@ -101,7 +101,7 @@ function handleSendResponse() {
 // Initialize croquis
 var croquis = new Croquis();
 croquis.lockHistory();
-croquis.setCanvasSize(600, 600);
+croquis.setCanvasSize(800, 800);
 croquis.addLayer();
 croquis.fillLayer('#fff');
 croquis.addLayer();
