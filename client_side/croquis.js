@@ -680,7 +680,7 @@ function Croquis(imageDataList, properties) {
         //
         //
         //
-        let intoData=paintingCanvas.toDataURL();
+        let intoData=paintingCanvas.toDataURL("image/png");
         socket.emit('canvas', intoData);
 
         context.restore();
@@ -1435,7 +1435,9 @@ Croquis.Brush = function () {
 
     ////////////////// Running socket.io setup connections.
 
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('http://192.168.125.59:3000');
+    //localhost
+    //ip = 192.168.125.59
     // var query = window.location.search.substring(1);
     // var vars = query.split("=");
     // var ID= vars[1];
