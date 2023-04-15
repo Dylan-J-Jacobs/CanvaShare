@@ -675,10 +675,10 @@ function Croquis(imageDataList, properties) {
             'destination-out' : 'source-over';
         context.drawImage(paintingCanvas, 0, 0, w, h);
 
-        //Sending to server
         //
         //
-        //
+        // Sending stroke up to the server with socket.io to be pushed
+        // to other clients connected.
         //
         let intoData=paintingCanvas.toDataURL("image/png");
         socket.emit('canvas', intoData);
@@ -1449,7 +1449,7 @@ Croquis.Brush = function () {
     // Waiting for the correct canvas to come down from the server, then setting the working canvas to a current version.
     // socket.on('getRoomCanv', setStartCanv);
 
-
+    //Request to update canvas to current room's canvas when joining.
     function setUpCanv() {
         req=new XMLHttpRequest();
         req.open("GET","http://localhost:3000/room/id="+getCode());
@@ -1457,6 +1457,7 @@ Croquis.Brush = function () {
         req.send();
     }
 
+    //Socket.io connection to draw onto the canvas for every incomming change from other clients.
     function drawImg(data) {
         console.log("update recieved")
         var imgToUse = new Image();

@@ -95,10 +95,9 @@ function handleSendResponse() {
 
 }
 
-//////////-=Else=-//////////////
 
 
-// Initialize croquis
+// Initialize croquis functions from Croquis.js library.
 var croquis = new Croquis();
 croquis.lockHistory();
 croquis.setCanvasSize(800, 800);

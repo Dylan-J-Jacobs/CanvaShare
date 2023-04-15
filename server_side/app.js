@@ -131,9 +131,11 @@ MongoClient.connect(connstr)
 
 			console.log('New Connection: ' + socket.id);
 
+			//When send connection from client comes in, run function that sends out to everyone.
 			socket.on("canvas", sendEveryone);
 			// socket.on("getRoomCanv", dbFetch);
 
+			//Function that sends out an update to everyone.
 			function sendEveryone(data) {
 				io.emit('canvas', data);
 				console.log("blah"/*data*/);
