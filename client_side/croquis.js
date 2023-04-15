@@ -1435,7 +1435,7 @@ Croquis.Brush = function () {
 
     ////////////////// Running socket.io setup connections.
 
-    socket = io.connect('http://192.168.125.59:3000');
+    socket = io.connect('http://192.168.1.120:3000');
     //localhost
     //ip = 192.168.125.59
     // var query = window.location.search.substring(1);
